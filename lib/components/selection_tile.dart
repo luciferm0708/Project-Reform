@@ -14,8 +14,8 @@ class MySelectionTile extends StatelessWidget {
     required this.value,
     required this.groupValue,
     required this.onChanged,
-    this.height = 60.0,  // Default height
-    this.width = double.infinity,  // Default width, can be customized
+    this.height = 60.0,
+    this.width = double.infinity,
   });
 
   @override
@@ -27,8 +27,8 @@ class MySelectionTile extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.green,  // Border color
-            width: 2.0,           // Border width
+            color: Colors.green,
+            width: 2.0,
           ),
           borderRadius: BorderRadius.circular(12),  // Rounded corners
         ),

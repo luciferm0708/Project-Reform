@@ -42,9 +42,9 @@ class _LoginState extends State<Login> {
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0), // Adding horizontal padding
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start, // Aligning the following items to the left
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       "Email | ইমেইল",
@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                       hintText: "Enter email | ইমেইল প্রবেশ করুন",
                       obscureText: false,
                     ),
-                    const SizedBox(height: 20), // Add spacing between fields
+                    const SizedBox(height: 20),
                     const Text(
                       "Password | পাসওয়ারড",
                       style: TextStyle(
@@ -75,7 +75,7 @@ class _LoginState extends State<Login> {
                       hintText: "Enter password | পাসওয়ারড প্রবেশ করুন",
                       obscureText: true,
                     ),
-                    const SizedBox(height: 10), // Add spacing before the Align widget
+                    const SizedBox(height: 10),
                     const Align(
                       alignment: Alignment.centerRight,
                       child: Text(

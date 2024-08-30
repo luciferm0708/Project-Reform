@@ -102,7 +102,7 @@ class _UserTypeState extends State<UserType> {
               const SizedBox(height: 20),
               MyButton(
                 text: "Submit",
-                onTap: navigateToRegisterPage,  // Navigate to the respective register page
+                onTap: navigateToRegisterPage,
                 height: 45.0,
                 width: 120.0,
               ),

@@ -10,7 +10,7 @@ class VerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent, // Background color set to greenAccent
+      backgroundColor: Colors.greenAccent,
       appBar: AppBar(
         title: const Text('Verification!'),
       ),
@@ -41,12 +41,12 @@ class VerificationPage extends StatelessWidget {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreenAccent, // Button color set to lightGreenAccent
+                backgroundColor: Colors.lightGreenAccent,
               ),
               child: const Text(
                 'Verify',
                 style: TextStyle(
-                  color: Colors.black, // Text color set to black
+                  color: Colors.black,
                 ),
               ),
             ),
