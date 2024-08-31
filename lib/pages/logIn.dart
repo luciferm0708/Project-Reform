@@ -4,6 +4,7 @@ import 'package:project_reform_v_demo/pages/cropInput.dart';
 import 'package:project_reform_v_demo/pages/userType.dart';
 
 import '../components/button.dart';
+import 'home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -92,10 +93,27 @@ class _LoginState extends State<Login> {
                       child: MyButton(
                         text: 'Log in!',
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const CropInputPage()),
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Success'),
+                                content: const Text('Login Successful!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const Home()),
+                                      );
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
                           );
+
                         },
                         height: 45.0,  // Custom height
                         width: 120.0,  // Custom width

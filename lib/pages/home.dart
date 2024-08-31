@@ -1,51 +1,76 @@
-import 'package:project_reform_v_demo/pages/home.dart';
-import 'package:project_reform_v_demo/pages/logIn.dart';
-import 'package:project_reform_v_demo/pages/userType.dart';
-import 'package:project_reform_v_demo/themes/theme_provider.dart';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:project_reform_v_demo/pages/cropInput.dart';
+import 'package:project_reform_v_demo/pages/farmerRegister.dart';
+import 'package:project_reform_v_demo/pages/userType.dart';
 
-void main() {
+class Home extends StatefulWidget {
+  final String? cropName;
+  final String? quantity;
+  final String? price;
+  final bool showPopup;
+  final int points;
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
-      ],
-      child: MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
+  const Home({
+    super.key,
+    this.cropName,
+    this.quantity,
+    this.price,
+    this.showPopup = false,
+    this.points = 200, // Default points
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const Home(cropName: '', quantity: '', price: '',),
-      theme: Provider.of<ThemeProvider>(context).themeData,
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.showPopup) {
+        _showCropDataPopup();
+      }
+    });
+  }
+
+  void _showCropDataPopup() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Crop Information'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Crop Name: ${widget.cropName}'),
+              Text('Quantity: ${widget.quantity}'),
+              Text('Price: ${widget.price}'),
+              const SizedBox(height: 10),
+              Text('New Points: ${widget.points}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
-}
-/*
-import 'package:flutter/material.dart';
-import 'package:untitled/Pages/SecondPage.dart';
-import 'package:untitled/Pages/ThirdPage.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.green,
           titleTextStyle: TextStyle(
             color: Colors.white,
@@ -56,14 +81,14 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('আমাদের বাজার'),
+          title: const Text('আমাদের বাজার'),
           actions: [
             PopupMenuButton<int>(
               onSelected: (item) => print('Selected $item'),
               itemBuilder: (context) => [
-                PopupMenuItem<int>(value: 0, child: Text('Option 1')),
-                PopupMenuItem<int>(value: 1, child: Text('Option 2')),
-                PopupMenuItem<int>(value: 2, child: Text('Option 3')),
+                const PopupMenuItem<int>(value: 0, child: Text('Option 1')),
+                const PopupMenuItem<int>(value: 1, child: Text('Option 2')),
+                const PopupMenuItem<int>(value: 2, child: Text('Option 3')),
               ],
             ),
           ],
@@ -75,14 +100,14 @@ class MyApp extends StatelessWidget {
             child: Column(
               children: [
                 CreditCardSwiper(),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 SingleLongHorizontalCard(
                   imagePath: 'assets/farmer.jpg',
                   description: 'আবেদ আলী আমাদের একজন আস্থাভাজন কৃষক জেলা : নওগা ',
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Expanded(child: TwoByThreeImageButtonGrid()),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 RoundedCornerSearchBox(),
               ],
             ),
@@ -92,6 +117,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
 
 class CreditCardSwiper extends StatefulWidget {
   @override
@@ -248,13 +275,13 @@ class TwoByThreeImageButtonGrid extends StatelessWidget {
               // Navigate to SecondPage when the first button is pressed
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SecondPage()),
+                MaterialPageRoute(builder: (context) => const UserType()),
               );
             } else if (index == 1) {
               // Navigate to ThirdPage when the second button is pressed
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Thirdpage()),
+                MaterialPageRoute(builder: (context) => const CropInputPage()),
               );
             } else {
               // Handle other buttons or add more navigation logic here
@@ -297,4 +324,3 @@ class RoundedCornerSearchBox extends StatelessWidget {
     );
   }
 }
- */
